@@ -119,7 +119,7 @@ After aggregating the generated latent sources, the second layers separate the l
 The redundancy of the separating process disturbs utilising the model in the restricted environment.
 Therefore, we focus on this point and explore the methods for lightening the model's parameters and maintaining the performance.
 
-![Comparison the original LaSAFT block and proposed LightSAFT block.
+![Figure 1. Comparison the original LaSAFT block and proposed LightSAFT block.
 The $\mathbb{x}$ is the input intermediate feature and the $\mathbb{v_i}$ is generated latent source.](./img/comparison_of_blocks.png){: width:40%}
 
 Figure 1 shows the difference between the original LaSAFT block and the proposed LightSAFT block in the latent source separating process.
@@ -137,7 +137,7 @@ The LightSAFT mechanism shows plausible results and decreases the number of para
 To more lighten the number of parameters, we change the LightSAFT blocks in the encoder to TFC-TDF blocks.
 The TFC-TDF block has fewer parameters than the LightSAFT block because it does not have to generate $|S_L|$ latent source,
 and the convolution filter has only a few parameters.    
-Even though the advanced network which contains TFC-TDF blocks have fewer parameters, they show the bettor performance in the MDX challenge.
+Even though the advanced LightSAFT-net (LightSAFT+) which contains TFC-TDF blocks have fewer parameters, they show the bettor performance in the MDX challenge.
 
 
 # Experiments
@@ -152,11 +152,11 @@ For data augmentation, we generated the mixtures by mixing the different track's
 
 ## Results
 
-| model                         | # of parameters | vocals | drums | bass  | other | Avg   |
-| ----------------------------- | --------------- | ------ | ----- | ----- | ----- | ----- |
-| <pre>LaSAFT<br/> [@choi:2020] | 4.5M            | -      | -     | -     | -     | -     |
-| LightSAFT                     | 3.8M            | 6.685  | 5.272 | 5.498 | 4.121 | 5.394 |
-| Advanced LightSAFT            | 2M              | 7.275  | 5.935 | 5.823 | 4.557 | 5.897 |
+| model      | # of parameters | vocals | drums | bass  | other | Avg   |
+| ---------- | --------------- | ------ | ----- | ----- | ----- | ----- |
+| LaSAFT     | 4.5M            | -      | -     | -     | -     | -     |
+| LightSAFT  | 3.8M            | 6.685  | 5.272 | 5.498 | 4.121 | 5.394 |
+| LightSAFT+ | 2M              | 7.275  | 5.935 | 5.823 | 4.557 | 5.897 |
 
 <th>Table 1. A comparison with original LaSAFT </th>
 
@@ -166,17 +166,17 @@ For data augmentation, we generated the mixtures by mixing the different track's
 | XUMX<br/> [@sawata:2021]          | multi-head  | 6.341  | 5.615 | 5.807 | 3.722 | 5.372 |
 | UMX<br/> [@stoter:2019]           | Single      | 5.042  | 5.357 | 5.504 | 3.309 | 5.042 |
 | LightSAFT                         | conditioned | 6.685  | 5.272 | 5.498 | 4.121 | 5.394 |
-| Advanced <br/>LightSAFT           | conditioned | 7.275  | 5.935 | 5.823 | 4.557 | 5.897 |
+| LightSAFT+                        | conditioned | 7.275  | 5.935 | 5.823 | 4.557 | 5.897 |
 
 <th>Table 2. A comparison with other source separation models</th> 
 
 We compare the performance between the original model and the proposed models in the same condition.  Table 1 shows the results of the model's SDR [@vincent:2006] score in the MDX challenge and the number of each model's parameters. 
 In same condition, the original LaSAFT's parameters are 4.5M, while the LightSAFT has 3.8M parameters sufficient compression for the MDX challenge.  
-The advanced LightSAFT, which contains the TFC-TDF blocks in the encoder, has only 2M parameters.
+The LightSAFT+, which contains the TFC-TDF blocks in the encoder, has only 2M parameters.
 The original LaSAFT, which cannot separate the songs in a limited time, was not reasonable for this challenge.  
 On the other hand, the LightSAFT, which is posted as a comparison of the MDX challenge, 
  can separate the music source in a limited time and achieve comparable performance.
-Even though the advanced LightSAFT has the fewest parameters in the comparison group, it shows the best performance. 
+Even though the LightSAFT+ has the fewest parameters in the comparison group, it shows the best performance. 
 It seems to have no conditioning mechanism, which converts the latent space in encoder inducing stationary training.
 
 
@@ -186,13 +186,13 @@ performance than the single source separation model; the conditioned model can n
 since it have to learn generalized weights for conducting all tasks in limited model complexity. 
 Despite performance degradation, the conditioned source separation model is more attractive because of its applicability and efficiency. 
 Table 2 shows whether the model is conditioned or not and its performance. 
-The advanced LightSAFT-Net shows competitive performance despite the conditioned source separation model. 
+The LightSAFT+shows competitive performance despite the conditioned source separation model. 
 Even the model shows a better performance than Demucs-HQ, a single-source separation model and another comparison of the MDX challenge.  
 
 # Conclusion
 We explore the method to reduce the number of the model's parameters and maintain the performance.
 We show that our method is reasonable for source separation tasks in the performance and the applicability, which can be used in a restricted environment like the MDX challenge.  
-The advanced LightSAFT-Net shows the competitive performance even though it is a conditioned source separation model.
+The LightSAFT+shows the competitive performance even though it is a conditioned source separation model.
 For future work, we will study the method for improving our model performance, like TFC-TDF in the encoder.  
 
 # Reference
