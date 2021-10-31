@@ -120,7 +120,7 @@ The redundancy of the separating process disturbs utilising the model in the res
 Therefore, we focus on this point and explore the methods for lightening the model's parameters and maintaining the performance.
 
 ![Figure 1. Comparison the original LaSAFT block and proposed LightSAFT block.
-The $\mathbb{x}$ is the input intermediate feature and the $\mathbb{v_i}$ is generated latent source.](./img/comparison_of_blocks.png)
+The $\mathbb{x}$ is the input intermediate feature and the $\mathbb{v_i}$ is generated latent source.](./img/comparison_of_blocks.png){: width:"40%"}
 
 Figure 1 shows the difference between the original LaSAFT block and the proposed LightSAFT block in the latent source separating process.
 The blocks receive the intermediate feature x and generate the latent source V.
@@ -158,7 +158,7 @@ For data augmentation, we generated the mixtures by mixing the different track's
 | LightSAFT  | 3.8M            | 6.685  | 5.272 | 5.498 | 4.121 | 5.394 |
 | LightSAFT+ | 2M              | 7.275  | 5.935 | 5.823 | 4.557 | 5.897 |
 
-<tr>**Table 1**. A comparison with original LaSAFT</tr>
+<tr><td style="text-align: center"> **Table 1**. A comparison with original LaSAFT</td></tr>
 
 | model                             | type        | vocals | drums | bass  | other | Avg   |
 | --------------------------------- | ----------- | ------ | ----- | ----- | ----- | ----- |
@@ -168,7 +168,7 @@ For data augmentation, we generated the mixtures by mixing the different track's
 | LightSAFT                         | conditioned | 6.685  | 5.272 | 5.498 | 4.121 | 5.394 |
 | LightSAFT+                        | conditioned | 7.275  | 5.935 | 5.823 | 4.557 | 5.897 |
 
-<tr>**Table 2**. A comparison with other source separation models</tr>
+<tr><td style='text-align:center;' >**Table 2**. A comparison with other source separation models</td></tr>
 
 We compare the performance between the original model and the proposed models in the same condition.  Table 1 shows the results of the model's SDR [@vincent:2006] score in the MDX challenge and the number of each model's parameters. 
 In same condition, the original LaSAFT's parameters are 4.5M, while the LightSAFT has 3.8M parameters sufficient compression for the MDX challenge.  
